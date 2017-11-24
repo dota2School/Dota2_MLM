@@ -1,0 +1,33 @@
+server:
+  port: 9999
+spring:
+  application:
+    name: app    # 项目名称尽量用小写
+  aop:
+    auto: true
+    proxy-target-class: false
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none    
+  datasource:                           # 指定数据源
+    url: jdbc:mysql://47.92.82.249:3306/appv3?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: xuxue
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      init-s-q-l: set names utf8mb4
+
+logging:
+  level:
+    root: INFO
+    com.chinaoly: DEBUG
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.itmuch.youran.persistence: ERROR
+app:
+  id: wxc210c7072c5517db
+  secret: be56ae5ec334da8d14f28644b44a054b
+  path: d:/test
