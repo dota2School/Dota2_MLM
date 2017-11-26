@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
+/**
+ *
+ * 用户相关的操作的controller
+ * @author Xuxue1 2017-11-26
+ */
 @RestController
 @RequestMapping("/api/mlm/wx/user")
 public class MlmWxUserController {
@@ -54,10 +60,22 @@ public class MlmWxUserController {
      * @param className 用户的班级名称
      * @return 绑定的结果
      *  返回:
-     *      1
+     *      1.success               bool    请求是否成功
+     *      2.errorCode             int     错误码
+     *      3.errorMessage          string  错误信息
+     *      4.userInfo.nickName     string  用户的昵称
+     *      5.userInfo.roleType     string  用户的类型       1代表学生 2代表老师
+     *      6.userInfo.classType    string  班级类型        萌新班 提高班
+     *      7.userInfo.steamID      string  用户的steamID
+     *      8.userInfo.rankScore    string  用户的天梯分
+     *      9.userInfo.contents     string  内容
+     *      10.userInfo.avatarUrl   string  用户头像地址
+     *      11.userInfo.userName    string  用户名
+     *      12.userInfo.className   string  班级名
+     *
      */
-    @RequestMapping(value = "/bind",method = RequestMethod.POST)
-    public Entry bind(
+    @RequestMapping(value = "/modify",method = RequestMethod.POST)
+    public Entry modify(
             String session,
             String roleType,
             String nickName,
@@ -69,29 +87,6 @@ public class MlmWxUserController {
         return null;
     }
 
-    /**
-     * 修改用户信息
-     * @param session
-     * @param roleType
-     * @param nickName
-     * @param classType
-     * @param steamID
-     * @param rankScore
-     * @param contents
-     * @param className
-     * @return
-     */
-    @RequestMapping(value = "/modify",method = RequestMethod.POST)
-    public Entry modify(String session,
-                        String roleType,
-                        String nickName,
-                        String classType,
-                        String steamID,
-                        String rankScore,
-                        String contents,
-                        String className){
-                return null;
-    }
 
 
 }
