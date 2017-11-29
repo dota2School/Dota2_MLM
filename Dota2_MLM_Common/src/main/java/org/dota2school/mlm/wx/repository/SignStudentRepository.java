@@ -1,4 +1,4 @@
-package org.dota2school.mlm.wx.respository;
+package org.dota2school.mlm.wx.repository;
 
 
 import org.dota2school.mlm.wx.domain.SignStudent;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by nt on 2017/7/11.
  */
-public interface SignStudentRespository extends JpaRepository<SignStudent,SignStudentPK>{
+public interface SignStudentRepository extends JpaRepository<SignStudent,SignStudentPK>{
 
     @Query("select t from sign_student t where sign_id =?1")
     List<SignStudent> findBySign(int signId);

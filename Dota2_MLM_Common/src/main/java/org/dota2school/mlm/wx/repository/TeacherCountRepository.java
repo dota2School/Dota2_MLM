@@ -1,4 +1,4 @@
-package org.dota2school.mlm.wx.respository;
+package org.dota2school.mlm.wx.repository;
 
 
 
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 /**
  * Created by nt on 2017/7/29.
  */
-public interface TeacherCountRespository extends JpaRepository<TeacherCount,String>,
+public interface TeacherCountRepository extends JpaRepository<TeacherCount,String>,
         JpaSpecificationExecutor<TeacherCount> {
 
 }
