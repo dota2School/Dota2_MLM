@@ -1,6 +1,8 @@
 package org.dota2school.mlm.wx.controller;
 
-import org.dota2school.mlm.common.model.Entry;
+import org.dota2school.mlm.wx.annotation.MLMAop;
+import org.dota2school.mlm.wx.annotation.Tested;
+import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmWxClockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +29,8 @@ public class MlmWxClockController {
      * @param teachDate
      * @return
      */
+    @Tested
+    @MLMAop("")
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public Entry addClock(
             String session,
@@ -43,7 +47,9 @@ public class MlmWxClockController {
      * @param signId
      * @return
      */
-    @RequestMapping(value = "/get",method = RequestMethod.GET)
+    @Tested
+    @MLMAop("")
+    @RequestMapping(value = "/get_detail",method = RequestMethod.GET)
     public Entry getClock(
             String session,
             String signId){
@@ -55,6 +61,9 @@ public class MlmWxClockController {
      * @param session
      * @return
      */
+    @Tested
+    @MLMAop("")
+    @RequestMapping(value = "/get_student",method = RequestMethod.GET)
     public Entry getUserResponseClock(String session){
          return mlmWxClockService.getUserResponseClock(session);
     }
@@ -71,6 +80,8 @@ public class MlmWxClockController {
      * @param pictrues
      * @return
      */
+    @Tested
+    @MLMAop("")
     @RequestMapping(value = "/response",method = RequestMethod.POST)
     public Entry responseClock(
             String session,

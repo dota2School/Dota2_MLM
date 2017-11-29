@@ -1,13 +1,13 @@
 package org.dota2school.mlm.wx.service;
 
 
-import org.dota2school.mlm.common.domain.User;
-import org.dota2school.mlm.common.exception.MLMException;
-import org.dota2school.mlm.common.model.Entry;
-import org.dota2school.mlm.common.model.SessionKey;
-import org.dota2school.mlm.common.respository.UserRespository;
-import org.dota2school.mlm.common.util.AES;
-import org.dota2school.mlm.common.util.RequestSessionKey;
+import org.dota2school.mlm.wx.domain.User;
+import org.dota2school.mlm.wx.exception.MLMException;
+import org.dota2school.mlm.wx.model.Entry;
+import org.dota2school.mlm.wx.model.SessionKey;
+import org.dota2school.mlm.wx.respository.UserRespository;
+import org.dota2school.mlm.wx.util.AES;
+import org.dota2school.mlm.wx.util.RequestSessionKey;
 import org.dota2school.mlm.wx.WxConfig;
 import org.dota2school.mlm.wx.entry.UserEntry;
 import org.slf4j.Logger;

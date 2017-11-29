@@ -1,22 +1,23 @@
 package org.dota2school.mlm.wx.service;
 
 import javafx.util.Pair;
-import org.dota2school.mlm.common.domain.Clock;
-import org.dota2school.mlm.common.domain.SignStudent;
-import org.dota2school.mlm.common.domain.User;
-import org.dota2school.mlm.common.exception.MLMException;
-import org.dota2school.mlm.common.model.Entry;
-import org.dota2school.mlm.common.model.SessionKey;
-import org.dota2school.mlm.common.model.SuccessEntry;
-import org.dota2school.mlm.common.respository.SignRespository;
-import org.dota2school.mlm.common.respository.SignStudentRespository;
-import org.dota2school.mlm.common.respository.UserRespository;
-import org.dota2school.mlm.common.util.RequestSessionKey;
+import org.dota2school.mlm.wx.domain.Clock;
+import org.dota2school.mlm.wx.domain.SignStudent;
+import org.dota2school.mlm.wx.domain.User;
+import org.dota2school.mlm.wx.exception.MLMException;
+import org.dota2school.mlm.wx.model.Entry;
+import org.dota2school.mlm.wx.model.SessionKey;
+import org.dota2school.mlm.wx.model.SuccessEntry;
+import org.dota2school.mlm.wx.respository.SignRespository;
+import org.dota2school.mlm.wx.respository.SignStudentRespository;
+import org.dota2school.mlm.wx.respository.UserRespository;
+import org.dota2school.mlm.wx.util.RequestSessionKey;
 import org.dota2school.mlm.wx.WxConfig;
 import org.dota2school.mlm.wx.entry.ClockDetailEntry;
 import org.dota2school.mlm.wx.entry.ClockEntry;
 import org.dota2school.mlm.wx.entry.ResponseClockEntry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.text.DateFormat;
@@ -25,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class MlmWxClockService {
 
     @Autowired
@@ -50,7 +52,7 @@ public class MlmWxClockService {
                 wxConfig.getId());
     }
 
-    private static final ThreadLocal<DateFormat> formate = ThreadLocal.withInitial(()->new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+    private static final ThreadLocal<DateFormat> format = ThreadLocal.withInitial(()->new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 
 
 
@@ -62,7 +64,7 @@ public class MlmWxClockService {
         try {
             Clock clock = new Clock();
             clock.setOpenId(session);
-            clock.setTeachDate(formate.get().parse(teachDate));
+            clock.setTeachDate(format.get().parse(teachDate));
             clock.setTeachTime(teachTime);
             clock.setUpdateTime(new Date());
             clock.setClassType(classType);
@@ -86,7 +88,7 @@ public class MlmWxClockService {
         Clock clock = signRespository.findOne(Integer.parseInt(signId));
         List<Pair<User,SignStudent>> users = students
                     .stream()
-                    .map(student->new Pair(userRespository.findOne(student.getOpenId()),student))
+                    .map(student->new Pair<User,SignStudent>(userRespository.findOne(student.getOpenId()),student))
                     .collect(Collectors.toList());
         return new ClockDetailEntry(clock,users);
     }
@@ -108,7 +110,7 @@ public class MlmWxClockService {
                                String evaluate,
                                String pictrues){
         try{
-            if(session != null){
+            if(session == null){
                 SessionKey requestSessionKeyResponse = requestSessionKey.request(code);
                 session = requestSessionKeyResponse.getOpenid();
             }

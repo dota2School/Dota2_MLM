@@ -1,7 +1,7 @@
 package org.dota2school.mlm.wx.entry;
 
-import org.dota2school.mlm.common.domain.TeacherCount;
-import org.dota2school.mlm.common.model.SuccessEntry;
+import org.dota2school.mlm.wx.domain.TeacherCount;
+import org.dota2school.mlm.wx.model.SuccessEntry;
 
 public class TeacherCountEntry  extends SuccessEntry{
 

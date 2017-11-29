@@ -1,6 +1,6 @@
 package org.dota2school.mlm.wx.controller;
 
-import org.dota2school.mlm.common.model.Entry;
+import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmWxFileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

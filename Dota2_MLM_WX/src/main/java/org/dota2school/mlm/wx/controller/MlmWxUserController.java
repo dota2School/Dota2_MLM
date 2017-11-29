@@ -1,6 +1,7 @@
 package org.dota2school.mlm.wx.controller;
 
-import org.dota2school.mlm.common.model.Entry;
+import org.dota2school.mlm.wx.annotation.Tested;
+import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmWxUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +47,7 @@ public class MlmWxUserController {
      *  返回:
      *      1.session: 用户的openid
      */
-    @RequestMapping(value = "/query",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Entry query(String iv,String code,String encryptedData)throws Exception{
         return userService.query(iv,code,encryptedData);
     }
@@ -77,6 +78,7 @@ public class MlmWxUserController {
      *      12.userInfo.className   string  班级名
      *
      */
+    @Tested
     @RequestMapping(value = "/modify",method = RequestMethod.POST)
     public Entry modify(
             String session,
@@ -117,11 +119,10 @@ public class MlmWxUserController {
      *      12.userInfo.className   string  班级名
      *
      */
+    @Tested
     @RequestMapping(value = "/query",method = RequestMethod.POST)
     public Entry query(String session){
                 return userService.query(session);
     }
-
-
 
 }

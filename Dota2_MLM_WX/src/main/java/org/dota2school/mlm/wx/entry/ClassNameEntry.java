@@ -1,6 +1,6 @@
 package org.dota2school.mlm.wx.entry;
 
-import org.dota2school.mlm.common.model.SuccessEntry;
+import org.dota2school.mlm.wx.model.SuccessEntry;
 
 import java.util.List;
 

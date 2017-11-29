@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration;
 import java.util.TimeZone;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = { JacksonAutoConfiguration.class })
 public class WxApplication {
     static{
         TimeZone.setDefault(TimeZone.getTimeZone("PRC"));

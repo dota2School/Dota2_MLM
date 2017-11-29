@@ -1,10 +1,10 @@
 package org.dota2school.mlm.wx.entry;
 
 import javafx.util.Pair;
-import org.dota2school.mlm.common.domain.Clock;
-import org.dota2school.mlm.common.domain.SignStudent;
-import org.dota2school.mlm.common.domain.User;
-import org.dota2school.mlm.common.model.SuccessEntry;
+import org.dota2school.mlm.wx.domain.Clock;
+import org.dota2school.mlm.wx.domain.SignStudent;
+import org.dota2school.mlm.wx.domain.User;
+import org.dota2school.mlm.wx.model.SuccessEntry;
 
 import java.util.List;
 import java.util.stream.Collectors;

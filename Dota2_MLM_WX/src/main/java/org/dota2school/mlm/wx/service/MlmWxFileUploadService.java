@@ -1,8 +1,8 @@
 package org.dota2school.mlm.wx.service;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.dota2school.mlm.common.exception.MLMException;
-import org.dota2school.mlm.common.model.Entry;
+import org.dota2school.mlm.wx.exception.MLMException;
+import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.WxConfig;
 import org.dota2school.mlm.wx.entry.UploadImgEntry;
 import org.slf4j.Logger;
@@ -27,15 +27,9 @@ public class MlmWxFileUploadService {
     public Entry uploadImg(MultipartHttpServletRequest multiReq){
         String session = multiReq.getParameter("session");
         if(session == null) session = "0";
-        System.out.println(session);
-        // 获取上传文件的路径
         String uploadFilePath = multiReq.getFile("filePath").getOriginalFilename();
-        System.out.println("uploadFlePath:" + uploadFilePath);
-        // 截取上传文件的文件名
         String uploadFileName = uploadFilePath.substring(
                 uploadFilePath.lastIndexOf('\\') + 1, uploadFilePath.indexOf('.'));
-        System.out.println("multiReq.getFile()" + uploadFileName);
-        // 截取上传文件的后缀
         String uploadFileSuffix = uploadFilePath.substring(
                 uploadFilePath.indexOf('.') + 1, uploadFilePath.length());
         System.out.println("uploadFileSuffix:" + uploadFileSuffix);
@@ -59,6 +53,7 @@ public class MlmWxFileUploadService {
             return new UploadImgEntry("/"+session + "/"+fileName+"."+uploadFileSuffix);
         } catch (IOException e) {
             LOG.info("Failed write file",e);
+            throw new MLMException(0);
         } finally {
             if (fis != null) {
                 try {
@@ -75,7 +70,6 @@ public class MlmWxFileUploadService {
                 }
             }
         }
-        throw new MLMException(0);
     }
 
 

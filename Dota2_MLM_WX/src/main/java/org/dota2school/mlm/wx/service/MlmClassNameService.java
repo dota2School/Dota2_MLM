@@ -1,8 +1,8 @@
 package org.dota2school.mlm.wx.service;
 
-import org.dota2school.mlm.common.domain.ClassName;
-import org.dota2school.mlm.common.model.Entry;
-import org.dota2school.mlm.common.respository.ClassNameRespository;
+import org.dota2school.mlm.wx.domain.ClassName;
+import org.dota2school.mlm.wx.model.Entry;
+import org.dota2school.mlm.wx.respository.ClassNameRespository;
 import org.dota2school.mlm.wx.entry.ClassNameEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
