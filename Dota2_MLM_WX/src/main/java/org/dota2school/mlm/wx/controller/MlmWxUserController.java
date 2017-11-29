@@ -1,5 +1,6 @@
 package org.dota2school.mlm.wx.controller;
 
+import org.dota2school.mlm.wx.annotation.MLMAop;
 import org.dota2school.mlm.wx.annotation.Tested;
 import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmWxUserService;
@@ -30,6 +31,7 @@ public class MlmWxUserController {
      * 返回:
      *     1.session: 用户的openid
      */
+    @MLMAop("")
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public Entry addUser(
             String iv,
@@ -47,6 +49,7 @@ public class MlmWxUserController {
      *  返回:
      *      1.session: 用户的openid
      */
+    @MLMAop("")
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public Entry query(String iv,String code,String encryptedData)throws Exception{
         return userService.query(iv,code,encryptedData);
@@ -79,6 +82,7 @@ public class MlmWxUserController {
      *
      */
     @Tested
+    @MLMAop("")
     @RequestMapping(value = "/modify",method = RequestMethod.POST)
     public Entry modify(
             String session,
@@ -120,6 +124,7 @@ public class MlmWxUserController {
      *
      */
     @Tested
+    @MLMAop("")
     @RequestMapping(value = "/query",method = RequestMethod.POST)
     public Entry query(String session){
                 return userService.query(session);

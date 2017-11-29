@@ -1,5 +1,6 @@
 package org.dota2school.mlm.wx.controller;
 
+import org.dota2school.mlm.wx.annotation.MLMAop;
 import org.dota2school.mlm.wx.annotation.Tested;
 import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmWxCountService;
@@ -30,6 +31,7 @@ public class MlmWxCountController {
      * @return 老师打卡记录的详细信息
      */
     @Tested
+    @MLMAop("")
     @RequestMapping(value = "/teacher",method = RequestMethod.POST)
     public Entry teacher(String session){
         return countService.teacher(session);

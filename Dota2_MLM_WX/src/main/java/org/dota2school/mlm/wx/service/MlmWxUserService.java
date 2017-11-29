@@ -5,7 +5,7 @@ import org.dota2school.mlm.wx.domain.User;
 import org.dota2school.mlm.wx.exception.MLMException;
 import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.model.SessionKey;
-import org.dota2school.mlm.wx.respository.UserRespository;
+import org.dota2school.mlm.wx.repository.UserRepository;
 import org.dota2school.mlm.wx.util.AES;
 import org.dota2school.mlm.wx.util.RequestSessionKey;
 import org.dota2school.mlm.wx.WxConfig;
@@ -26,7 +26,7 @@ public class MlmWxUserService {
     private WxConfig wxConfig;
 
     @Autowired
-    private UserRespository userRespository;
+    private UserRepository userRepository;
 
     private RequestSessionKey requestSessionKey;
 
@@ -51,7 +51,7 @@ public class MlmWxUserService {
     }
 
     public Entry query(String openId){
-        return new UserEntry(userRespository.findOne(openId));
+        return new UserEntry(userRepository.findOne(openId));
     }
 
     public Entry modify(String session,
@@ -63,7 +63,7 @@ public class MlmWxUserService {
                         String contents,
                         String className){
         try{
-            User user = userRespository.findOne(session);
+            User user = userRepository.findOne(session);
             if(roleType!=null && !roleType.isEmpty()){
                 user.setRoleType(Integer.parseInt(roleType));
             }
@@ -89,7 +89,7 @@ public class MlmWxUserService {
             if(className!=null && !className.isEmpty()){
                 user.setClassName(className);
             }
-            userRespository.save(user);
+            userRepository.save(user);
             return new UserEntry(user);
         }catch (Exception ex){
             throw new MLMException(ex,2);
@@ -104,7 +104,7 @@ public class MlmWxUserService {
             AES aes = new AES(sessionKey.getSession_key());
             HashMap data = aes.decryptData(encryptedData,iv);
             LOG.info("Add user {}",data);
-            User user = userRespository.findOne(sessionKey.getOpenid());
+            User user = userRepository.findOne(sessionKey.getOpenid());
             if(user == null){
                 user = new User();
                 user.setOpenId(sessionKey.getOpenid());
@@ -117,7 +117,7 @@ public class MlmWxUserService {
             user.setProvince(data.get("province").toString());
             user.setCity(data.get("city").toString());
             user.setAvatarUrl(data.get("avatarUrl").toString());
-            userRespository.save(user);
+            userRepository.save(user);
             LOG.info("Success add user!");
             return new UserEntry(user);
         }catch (Exception ex){

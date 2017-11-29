@@ -1,6 +1,7 @@
 package org.dota2school.mlm.wx.controller;
 
 
+import org.dota2school.mlm.wx.annotation.MLMAop;
 import org.dota2school.mlm.wx.annotation.Tested;
 import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmClassNameService;
@@ -27,6 +28,7 @@ public class MlmWxClassNameController {
      * @return
      */
     @Tested
+    @MLMAop("")
     @RequestMapping(value = "/query",method = RequestMethod.GET)
     public Entry queryClassName(){
         return classNameService.queryClassName();

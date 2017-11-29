@@ -1,5 +1,6 @@
 package org.dota2school.mlm.wx.controller;
 
+import org.dota2school.mlm.wx.annotation.MLMAop;
 import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.service.MlmWxFileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ public class MlmWxFileUploadController {
     @Autowired
     private MlmWxFileUploadService mlmWxFileUploadService;
 
+    @MLMAop("")
     @RequestMapping(value = "/upload_img",method = RequestMethod.POST)
     public Entry imgUpload(MultipartHttpServletRequest multiReq){
         return mlmWxFileUploadService.uploadImg(multiReq);

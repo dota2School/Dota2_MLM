@@ -2,7 +2,7 @@ package org.dota2school.mlm.wx.service;
 
 import org.dota2school.mlm.wx.domain.ClassName;
 import org.dota2school.mlm.wx.model.Entry;
-import org.dota2school.mlm.wx.respository.ClassNameRespository;
+import org.dota2school.mlm.wx.repository.ClassNameRepository;
 import org.dota2school.mlm.wx.entry.ClassNameEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 public class MlmClassNameService {
 
     @Autowired
-    private ClassNameRespository classNameRespository;
+    private ClassNameRepository classNameRepository;
 
     public Entry queryClassName(){
-        List<ClassName> classNames =  classNameRespository.findAll(new Sort(new Sort.Order(Sort.Direction.ASC,"order")));
+        List<ClassName> classNames =  classNameRepository.findAll(new Sort(new Sort.Order(Sort.Direction.ASC,"order")));
         List<ClassName> mengxin = new ArrayList<>();
         List<ClassName> tigao = new ArrayList<>();
         classNames.forEach(c->{

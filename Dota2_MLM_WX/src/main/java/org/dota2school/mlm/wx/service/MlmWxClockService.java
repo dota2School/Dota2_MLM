@@ -8,9 +8,9 @@ import org.dota2school.mlm.wx.exception.MLMException;
 import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.model.SessionKey;
 import org.dota2school.mlm.wx.model.SuccessEntry;
-import org.dota2school.mlm.wx.respository.SignRespository;
-import org.dota2school.mlm.wx.respository.SignStudentRespository;
-import org.dota2school.mlm.wx.respository.UserRespository;
+import org.dota2school.mlm.wx.repository.SignRepository;
+import org.dota2school.mlm.wx.repository.SignStudentRepository;
+import org.dota2school.mlm.wx.repository.UserRepository;
 import org.dota2school.mlm.wx.util.RequestSessionKey;
 import org.dota2school.mlm.wx.WxConfig;
 import org.dota2school.mlm.wx.entry.ClockDetailEntry;
@@ -30,16 +30,16 @@ import java.util.stream.Collectors;
 public class MlmWxClockService {
 
     @Autowired
-    private SignRespository signRespository;
+    private SignRepository signRepository;
 
     @Autowired
-    private SignStudentRespository signStudentRespository;
+    private SignStudentRepository signStudentRepository;
 
     @Autowired
     private WxConfig wxConfig;
 
     @Autowired
-    private UserRespository userRespository;
+    private UserRepository userRepository;
 
     private RequestSessionKey requestSessionKey;
 
@@ -75,7 +75,7 @@ public class MlmWxClockService {
             }catch (Exception ex){
                 clock.setTeachTimeInt(0);
             }
-            clock = signRespository.save(clock);
+            clock = signRepository.save(clock);
             return new ClockEntry(clock);
         }catch (Exception ex){
             throw new MLMException(ex);
@@ -84,17 +84,17 @@ public class MlmWxClockService {
 
     @SuppressWarnings("unchecked")
     public Entry queryDetailClock(String session,String signId){
-        List<SignStudent> students = signStudentRespository.findBySign(Integer.parseInt(signId));
-        Clock clock = signRespository.findOne(Integer.parseInt(signId));
+        List<SignStudent> students = signStudentRepository.findBySign(Integer.parseInt(signId));
+        Clock clock = signRepository.findOne(Integer.parseInt(signId));
         List<Pair<User,SignStudent>> users = students
                     .stream()
-                    .map(student->new Pair<User,SignStudent>(userRespository.findOne(student.getOpenId()),student))
+                    .map(student->new Pair<User,SignStudent>(userRepository.findOne(student.getOpenId()),student))
                     .collect(Collectors.toList());
         return new ClockDetailEntry(clock,users);
     }
 
     public Entry getUserResponseClock(String session){
-        List<SignStudent> students = signStudentRespository.findByOpenId(session);
+        List<SignStudent> students = signStudentRepository.findByOpenId(session);
         if(students.size()!=0){
             return new ResponseClockEntry(students.get(0));
         }
@@ -123,7 +123,7 @@ public class MlmWxClockService {
             if(pictrues != null){
                 signStudent.setPictrues(pictrues);
             }
-            signStudentRespository.saveAndFlush(signStudent);
+            signStudentRepository.saveAndFlush(signStudent);
             return new SuccessEntry();
         }catch (Exception ex){
             throw new MLMException(ex);
