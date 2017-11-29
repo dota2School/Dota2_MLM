@@ -1,5 +1,6 @@
 package org.dota2school.mlm.common.domain;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**

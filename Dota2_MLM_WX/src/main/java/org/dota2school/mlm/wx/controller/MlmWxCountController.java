@@ -1,6 +1,8 @@
 package org.dota2school.mlm.wx.controller;
 
 import org.dota2school.mlm.common.model.Entry;
+import org.dota2school.mlm.wx.service.MlmWxCountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class MlmWxCountController {
 
 
+    @Autowired
+    private MlmWxCountService countService;
+
     /**
      *
      * 获取老师打卡记录的信息
@@ -24,7 +29,7 @@ public class MlmWxCountController {
      */
     @RequestMapping(value = "/teacher",method = RequestMethod.POST)
     public Entry teacher(String session){
-        return null;
+        return countService.teacher(session);
     }
 
 }

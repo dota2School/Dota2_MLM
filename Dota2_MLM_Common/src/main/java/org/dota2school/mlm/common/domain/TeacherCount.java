@@ -3,6 +3,7 @@ package org.dota2school.mlm.common.domain;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 

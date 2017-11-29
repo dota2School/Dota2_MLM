@@ -9,7 +9,7 @@ import java.util.Date;
  * @time 2017-7-13
  */
 @Entity(name = "sign")
-public class Sign {
+public class Clock {
 
     @Id
     @Column(name = "sign_id")

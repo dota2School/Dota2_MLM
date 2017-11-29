@@ -13,6 +13,8 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
  * app 的aop
  * @author xujq 2017-9-15
@@ -24,7 +26,7 @@ public class VehAopAspect implements Ordered,ApplicationListener<ContextRefreshe
 
 
     @Pointcut("@annotation(org.dota2school.mlm.common.annotation.MLMAop)")
-    public void VehAopAspect() {
+    public void MlmAopAspect() {
 
     }
 
@@ -32,12 +34,13 @@ public class VehAopAspect implements Ordered,ApplicationListener<ContextRefreshe
      * 方法执行之前
      * @param joinPoint 目标类连接点对象
      */
-    @Before("VehAopAspect()")
+    @Before("MlmAopAspect()")
     public void beforeAop(JoinPoint joinPoint) {
         LOG.info("Process {}",joinPoint.getSignature());
+        LOG.info("Args {} ", Arrays.toString(joinPoint.getArgs()));
     }
 
-    @Around("VehAopAspect()")
+    @Around("MlmAopAspect()")
     public Entry aroundAop(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
        try{
            return (Entry) proceedingJoinPoint.proceed();
@@ -50,7 +53,7 @@ public class VehAopAspect implements Ordered,ApplicationListener<ContextRefreshe
        }
     }
 
-    @After("VehAopAspect()")
+    @After("MlmAopAspect()")
     public void afterAop(JoinPoint joinPoint) {
         LOG.info("After {}",joinPoint.getSignature());
     }

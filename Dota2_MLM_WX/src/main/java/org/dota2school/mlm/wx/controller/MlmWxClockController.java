@@ -1,6 +1,8 @@
 package org.dota2school.mlm.wx.controller;
 
 import org.dota2school.mlm.common.model.Entry;
+import org.dota2school.mlm.wx.service.MlmWxClockService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/mlm/wx/clock")
 public class MlmWxClockController {
+
+    @Autowired
+    private MlmWxClockService mlmWxClockService;
 
     /**
      *
@@ -29,7 +34,7 @@ public class MlmWxClockController {
             String students,
             String teachTime,
             String teachDate){
-        return null;
+        return mlmWxClockService.createClock(session,classType,students,teachTime,teachDate);
     }
 
     /**
@@ -42,13 +47,21 @@ public class MlmWxClockController {
     public Entry getClock(
             String session,
             String signId){
-
-        return null;
+        return mlmWxClockService.queryDetailClock(session,signId);
     }
 
     /**
      *
-     * @param seesion
+     * @param session
+     * @return
+     */
+    public Entry getUserResponseClock(String session){
+         return mlmWxClockService.getUserResponseClock(session);
+    }
+
+    /**
+     *
+     * @param session
      * @param iv
      * @param code
      * @param encryptedData
@@ -60,7 +73,7 @@ public class MlmWxClockController {
      */
     @RequestMapping(value = "/response",method = RequestMethod.POST)
     public Entry responseClock(
-            String seesion,
+            String session,
             String iv,
             String code,
             String encryptedData,
@@ -68,6 +81,6 @@ public class MlmWxClockController {
             String status,
             String evaluate,
             String pictrues){
-        return null;
+        return mlmWxClockService.responseClock(session,iv,code,encryptedData,signId,status,evaluate,pictrues);
     }
 }

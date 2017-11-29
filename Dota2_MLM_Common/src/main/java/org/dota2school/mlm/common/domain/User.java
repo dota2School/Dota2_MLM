@@ -24,7 +24,7 @@ public class User {
     private String nickName;
 
     @Column(name="type")
-    private int type;
+    private int roleType;
 
     @Column(name = "grede")
     private int grede;
@@ -42,7 +42,7 @@ public class User {
     private String rankScore;
 
     @Column(name = "class_content")
-    private String classContent;
+    private String contents;
 
     @Column(name = "class_type")
     private String classType;
@@ -130,12 +130,12 @@ public class User {
         this.rankScore = rankScore;
     }
 
-    public String getClassContent() {
-        return classContent;
+    public String getContents() {
+        return contents;
     }
 
-    public void setClassContent(String classContent) {
-        this.classContent = classContent;
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
     public String getOpenId() {
@@ -160,14 +160,6 @@ public class User {
 
     public void setNickName(String nickName) {
         this.nickName = nickName;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public int getGrede() {
@@ -202,20 +194,11 @@ public class User {
         this.updateTime = updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "openId='" + openId + '\'' +
-                ", avatarUrl='" + avatarUrl + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", type=" + type +
-                ", grede=" + grede +
-                ", streamId='" + streamId + '\'' +
-                ", motton='" + motton + '\'' +
-                ", updateTime=" + updateTime +
-                ", rankScore='" + rankScore + '\'' +
-                ", classContent='" + classContent + '\'' +
-                ", classType='" + classType + '\'' +
-                '}';
+    public int getRoleType() {
+        return roleType;
+    }
+
+    public void setRoleType(int roleType) {
+        this.roleType = roleType;
     }
 }
