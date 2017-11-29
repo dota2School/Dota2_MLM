@@ -8,8 +8,6 @@ import org.dota2school.mlm.wx.model.Entry;
 import org.dota2school.mlm.wx.model.ErrorEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
@@ -17,11 +15,11 @@ import java.util.Arrays;
 
 /**
  * app 的aop
- * @author xujq 2017-9-15
+ * @author Xuxue1 2017-9-15
  */
 @Aspect
 @Component
-public class VehAopAspect implements Ordered,ApplicationListener<ContextRefreshedEvent> {
+public class VehAopAspect implements Ordered {
     private static final Logger LOG = LoggerFactory.getLogger(VehAopAspect.class);
 
 
@@ -58,9 +56,6 @@ public class VehAopAspect implements Ordered,ApplicationListener<ContextRefreshe
         LOG.info("After {}",joinPoint.getSignature());
     }
 
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent event) {
-    }
 
     @Override
     public int getOrder() {

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by nt on 2017/7/29.
  */
 @Embeddable
-public class AllSignId implements Serializable{
+public class AllSignPk implements Serializable{
 
     @Column(name="sign_id")
     private int signId;

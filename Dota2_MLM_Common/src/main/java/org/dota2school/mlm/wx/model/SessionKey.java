@@ -5,8 +5,8 @@ public class SessionKey {
     private String openid;
     private String session_key;
 
-    private String errcode;
-    private String errmsg;
+    private String errCode;
+    private String errMsg;
 
     public String getOpenid() {
         return openid;
@@ -25,18 +25,18 @@ public class SessionKey {
     }
 
     public String getErrcode() {
-        return errcode;
+        return errCode;
     }
 
     public void setErrcode(String errcode) {
-        this.errcode = errcode;
+        this.errCode = errcode;
     }
 
     public String getErrmsg() {
-        return errmsg;
+        return errMsg;
     }
 
     public void setErrmsg(String errmsg) {
-        this.errmsg = errmsg;
+        this.errMsg = errmsg;
     }
 }

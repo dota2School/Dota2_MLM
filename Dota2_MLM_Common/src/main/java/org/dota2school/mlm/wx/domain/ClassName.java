@@ -6,21 +6,34 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- * Created by nt on 2017/9/3.
+ * 班级名称
+ * @author Xuxue1
  */
 @Entity(name = "class_name")
 public class ClassName {
 
+    /**
+     * 班级名称
+     */
     @Id
     @Column(name="name")
     private String className;
 
+    /**
+     * 跟新时间
+     */
     @Column(name = "update_time")
     private Date updateTime;
 
+    /**
+     * 排序
+     */
     @Column(name = "orders")
     private int order;
 
+    /**
+     * 萌新班还是提高班
+     */
     @Column(name="type")
     private String type;
 

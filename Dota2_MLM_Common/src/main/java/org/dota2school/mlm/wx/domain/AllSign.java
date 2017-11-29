@@ -9,27 +9,40 @@ import javax.persistence.IdClass;
 import java.util.Date;
 
 /**
- *
- * @author xujq
+ * 打卡记录的详细信息
+ * @author Xuxue1
  * @time 2017-7-29
  */
-@IdClass(AllSignId.class)
+@IdClass(AllSignPk.class)
 @Entity(name="view_all")
 public class AllSign {
 
+    /**
+     * 教学打卡的id
+     */
     @Id
     @Column(name="sign_id")
     private int signId;
 
+    /**
+     * 学生的open_id
+     */
     @Id
     @Column(name="s_open_id")
     private String sOpenId;
 
+    /**
+     * 老师的open_id
+     */
     @Column(name="t_open_id")
     private String tOpenId;
 
+    /**
+     * 老师的教学时长
+     */
     @Column(name="t_teach_time")
     private String tTeachTime;
+
 
     @Column(name="t_teach_date")
     private Date tTeachDate;

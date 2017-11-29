@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- *
+ * 学生回复打卡
  * @author xujq
  * @time 2017-7-11
  */
@@ -13,23 +13,41 @@ import java.util.Date;
 @IdClass(SignStudentPK.class)
 public class SignStudent {
 
+    /**
+     * 打卡id
+     */
     @Id
     @Column(name = "sign_id")
     private int signId;
 
+    /**
+     * 回复打卡的学生的open_id
+     */
     @Id
     @Column(name = "open_id")
     private String openId;
 
+    /**
+     * 学生对这次教学是否满意
+     */
     @Column(name = "status")
     private String status;
 
+    /**
+     * 学生对着次教学的评价
+     */
     @Column(name = "evaluate")
     private String evaluate;
 
+    /**
+     * 更新时间
+     */
     @Column(name = "updatetime")
     private Date date;
 
+    /**
+     * 学生评价的图片
+     */
     @Column(name="pictrues")
     private String pictrues;
 

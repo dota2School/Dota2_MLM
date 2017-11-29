@@ -8,42 +8,70 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
- * @author xujq
- * @time 2017-7-29
+ * 老师教学打卡的统计
+ * @author Xuxue1
  */
 @Entity(name="view_t_count")
 public class TeacherCount {
 
+    /**
+     * 老师的open_id
+     */
     @Id
     @Column(name="open_id")
     private String openId;
 
+    /**
+     * 更新时间
+     */
     @Column(name="updatetime")
     private Date updateTime;
 
+    /**
+     * 老师的班级类型
+     */
     @Column(name="t_class_type")
     private String classType;
 
-
+    /**
+     * 老师的昵称
+     */
     @Column(name="t_nick_name")
     private String tNickName;
 
+    /**
+     * 老师的微信昵称
+     */
     @Column(name="t_nick_name_p")
     private String tNickNameP;
 
+    /**
+     * 老师的打卡次数
+     */
     @Column(name="sign_times")
     private int signTimes;
 
+    /**
+     * 老师的打卡时长
+     */
     @Column(name="sign_long")
     private double signLong;
 
+    /**
+     * 老师的头像
+     */
     @Column(name="t_avatar_url")
     private String tAvatarUrl;
 
+    /**
+     * 打卡确认次数
+     */
     @Column(name="ack_times")
     private int ackTimes;
 
+    /**
+     * 打卡详细的信息
+     */
     @OneToMany(fetch = FetchType.LAZY,targetEntity = AllSign.class)
     @JoinColumn(name = "t_open_id", referencedColumnName = "open_id", insertable = false, updatable = false)
     @NotFound(action = NotFoundAction.IGNORE)

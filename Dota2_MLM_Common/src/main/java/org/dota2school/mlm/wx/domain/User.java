@@ -6,62 +6,113 @@ import javax.persistence.Id;
 import java.util.Date;
 
 /**
- *
+ * 用户表
  * @author xujq
  * @time 2017-7-10
  */
 @Entity(name = "USER")
 public class User {
 
+    /**
+     * 用户的open_id 用户的唯一标识
+     */
     @Id
     @Column(name = "open_id")
     private String openId;
 
+    /**
+     * 用户的头像地址
+     */
     @Column(name="avatar_url")
     private String avatarUrl;
 
+    /**
+     * 用户的昵称
+     */
     @Column(name = "nick_name")
     private String nickName;
 
+    /**
+     * 用户的类型 1是学生 2是老师
+     */
     @Column(name="type")
     private int roleType;
 
+    /**
+     * 用户的班级
+     */
     @Column(name = "grede")
     private int grede;
 
+    /**
+     * 用户的steamID
+     */
     @Column(name="stream_id")
     private String streamId;
 
+    /**
+     * 这个字段暂时没用
+     */
     @Column(name = "motton")
     private String motton;
 
+    /**
+     * 更新时间
+     */
     @Column(name="update_time")
     private Date updateTime;
 
+    /**
+     * 天梯分
+     */
     @Column(name = "rank_score")
     private String rankScore;
 
+    /**
+     * 想学 或者擅长的位置
+     */
     @Column(name = "class_content")
     private String contents;
 
+    /**
+     * 班级类型 提高班 萌新班
+     */
     @Column(name = "class_type")
     private String classType;
 
+    /**
+     * 班级的名字
+     */
     @Column(name="class_name")
     private String className;
 
+    /**
+     * 用户的微信昵称
+     */
     @Column(name = "nick_name_p")
     private String nickNameP;
 
+    /**
+     * 用户的性别
+     */
     @Column(name = "gender")
     private String gender;
 
+    /**
+     * 用户的国家
+     */
     @Column(name="country")
     private String country;
 
+    /**
+     * 用户的省份
+     */
     @Column(name="province")
     private String province;
 
+    /**
+     * 用户的城市
+     */
     @Column(name="city")
     private String city;
 

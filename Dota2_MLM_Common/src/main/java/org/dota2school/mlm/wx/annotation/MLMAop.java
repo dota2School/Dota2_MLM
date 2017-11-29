@@ -3,7 +3,9 @@ package org.dota2school.mlm.wx.annotation;
 import java.lang.annotation.*;
 
 /**
- * Created by nt on 2017/9/7.
+ *
+ * Aop 注解
+ * @author Xuxue1
  */
 @Target({ ElementType.METHOD, ElementType.FIELD, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
